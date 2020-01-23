@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class DestroyShape : MonoBehaviour
 {
+
+    GameManager gm;
+    GameObject gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager");
+        gm = gameManager.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -20,6 +25,7 @@ public class DestroyShape : MonoBehaviour
     {
         if (collision.gameObject.tag == this.gameObject.tag)
         {
+            gm.Addpoint();
             Destroy(this.gameObject);
         }
     }
