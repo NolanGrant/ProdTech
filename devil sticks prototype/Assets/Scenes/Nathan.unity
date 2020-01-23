@@ -120,6 +120,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &6189250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3682460641362241440, guid: a3210a53fcf83a542b202ae3469d08cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2059329261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6189251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6189250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320689b815e6c3948a8acb099e57c1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationForce: 111
+  movementMethod: 2
 --- !u!1001 &643928804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,7 +322,7 @@ SpriteRenderer:
   m_Size: {x: 4.84, y: 4.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1757842941
@@ -478,6 +498,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635419519515645204, guid: a3210a53fcf83a542b202ae3469d08cb,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635419519515645204, guid: a3210a53fcf83a542b202ae3469d08cb,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986526384589876114, guid: a3210a53fcf83a542b202ae3469d08cb,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
