@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
     public enum MovementMethod { setVelocityNoBrake, setVelocityWithBrake, addTorque }
     public MovementMethod movementMethod;
 
+    public float angleThreshold = 15f;
+    public float distanceThreshold = 1f;
+
+    public ObstacleManager obstacleManager;
+
     private void Awake()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -37,6 +42,33 @@ public class Player : MonoBehaviour
         else if (Input.GetButton("CW") == false && Input.GetButton("CCW") == false && movementMethod == MovementMethod.setVelocityWithBrake)
         {
             RotatePlayer(0);
+        }
+
+
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (obstacleManager.activeObstacle != null)
+        {
+            if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold)
+            {
+                Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.green);
+            }
+            else
+            {
+                Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.magenta);
+            }
+        }
+        Debug.DrawLine(transform.position, transform.position + transform.right * distanceThreshold, Color.white);
+
+        if (obstacleManager.activeObstacle != null)
+        {
+            if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold && Vector2.Distance(myRigidbody2D.position, obstacleManager.activeObstacle.transform.position) < distanceThreshold)
+            {
+                Destroy(obstacleManager.activeObstacle);
+            }
         }
     }
 
