@@ -19,6 +19,7 @@ public class DestroyCircle : MonoBehaviour
     {
         if (collision.gameObject.tag == "playerCircle")
         {
+            collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(redParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
             Destroy(this.gameObject);

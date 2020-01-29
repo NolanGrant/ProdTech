@@ -19,6 +19,7 @@ public class DestroyTriangle : MonoBehaviour
     {
         if (collision.gameObject.tag == "playerTriangle")
         {
+            collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(blueParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
             Destroy(this.gameObject);
