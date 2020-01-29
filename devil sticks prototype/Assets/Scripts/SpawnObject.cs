@@ -100,6 +100,7 @@ public class SpawnObject : MonoBehaviour
             {
                 sequenceActive = false;
                 firstObjectInSequence = false;
+                CurrentObjsBeforeSequence = 0;
                 currentTime = Time.time;
             }
             yield return new WaitForSeconds(0.2f);
