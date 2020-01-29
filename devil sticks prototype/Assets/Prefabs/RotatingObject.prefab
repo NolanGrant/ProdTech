@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31828008dd4eda499af9fadc3f8acc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redParticles: {fileID: 5998225600236391780, guid: 83cff8181bc004e4eb812f452d066453,
+    type: 3}
 --- !u!1 &7024390920294043365
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47347d54ad9bab64196eceb478edeb93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueParticles: {fileID: 6901061613214277503, guid: 4e1c5bc7c2b0662489a74667019753d2,
+    type: 3}
 --- !u!1 &7827808780164888694
 GameObject:
   m_ObjectHideFlags: 0

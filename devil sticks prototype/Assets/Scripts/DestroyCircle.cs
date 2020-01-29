@@ -6,6 +6,7 @@ public class DestroyCircle : MonoBehaviour
 {
     GameManager gm;
     GameObject gameManager;
+    public ParticleSystem redParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class DestroyCircle : MonoBehaviour
     {
         if (collision.gameObject.tag == "playerCircle")
         {
+            Instantiate(redParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
             Destroy(this.gameObject);
         }

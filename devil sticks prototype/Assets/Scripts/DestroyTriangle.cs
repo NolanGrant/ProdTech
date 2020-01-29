@@ -6,6 +6,7 @@ public class DestroyTriangle : MonoBehaviour
 {
     GameManager gm;
     GameObject gameManager;
+    public ParticleSystem blueParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class DestroyTriangle : MonoBehaviour
     {
         if (collision.gameObject.tag == "playerTriangle")
         {
+            Instantiate(blueParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
             Destroy(this.gameObject);
         }
