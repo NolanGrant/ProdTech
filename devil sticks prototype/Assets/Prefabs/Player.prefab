@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 227658276}
   m_Layer: 0
   m_Name: circle
-  m_TagString: circle
+  m_TagString: playerCircle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 1186660457}
   m_Layer: 0
   m_Name: triangle
-  m_TagString: triangle
+  m_TagString: playerTriangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

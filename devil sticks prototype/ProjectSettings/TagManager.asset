@@ -6,6 +6,8 @@ TagManager:
   tags:
   - triangle
   - circle
+  - playerTriangle
+  - playerCircle
   layers:
   - Default
   - TransparentFX

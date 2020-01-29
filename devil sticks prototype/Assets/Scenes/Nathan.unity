@@ -140,6 +140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationForce: 111
   movementMethod: 2
+  angleThreshold: 15
+  distanceThreshold: 1
+  obstacleManager: {fileID: 0}
 --- !u!1 &196935921
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateObject: {fileID: 7024390921108630468, guid: af2b3256f6ee1844b9704abcdce3c06e,
     type: 3}
+  sequenceCount: 0
+  objectsSpawned: 0
+  directionMultiplier: 0
+  sequenceActive: 0
 --- !u!4 &1531205027
 Transform:
   m_ObjectHideFlags: 0
@@ -780,12 +787,12 @@ PrefabInstance:
     - target: {fileID: 3682460641205626408, guid: a3210a53fcf83a542b202ae3469d08cb,
         type: 3}
       propertyPath: m_TagString
-      value: triangle
+      value: playerTriangle
       objectReference: {fileID: 0}
     - target: {fileID: 3682460640246623331, guid: a3210a53fcf83a542b202ae3469d08cb,
         type: 3}
       propertyPath: m_TagString
-      value: circle
+      value: playerCircle
       objectReference: {fileID: 0}
     - target: {fileID: 2635419519515645204, guid: a3210a53fcf83a542b202ae3469d08cb,
         type: 3}

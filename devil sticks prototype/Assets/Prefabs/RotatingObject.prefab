@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7024390920076894209}
   - component: {fileID: 2571969046416150116}
   - component: {fileID: 5936056716850988608}
-  - component: {fileID: 869906947588980958}
+  - component: {fileID: 5689385190156713389}
   m_Layer: 0
   m_Name: circle
   m_TagString: circle
@@ -200,7 +200,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &869906947588980958
+--- !u!114 &5689385190156713389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7024390920076894215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 750afb535b6283042bb3d55ff7e0cbbc, type: 3}
+  m_Script: {fileID: 11500000, guid: a31828008dd4eda499af9fadc3f8acc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7024390920294043365
@@ -336,8 +336,8 @@ GameObject:
   - component: {fileID: 7024390921265572429}
   - component: {fileID: 7024390921265572430}
   - component: {fileID: 5936056718039665677}
-  - component: {fileID: 4698562169196102849}
   - component: {fileID: 5993960574182269716}
+  - component: {fileID: 3473727275511009279}
   m_Layer: 0
   m_Name: triangle
   m_TagString: triangle
@@ -429,18 +429,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4698562169196102849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7024390921265572428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 750afb535b6283042bb3d55ff7e0cbbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &5993960574182269716
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -509,6 +497,18 @@ PolygonCollider2D:
       - {x: 0.43554688, y: -0.25195312}
       - {x: 0.43554688, y: -0.24609375}
       - {x: 0.43359375, y: -0.23632812}
+--- !u!114 &3473727275511009279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024390921265572428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47347d54ad9bab64196eceb478edeb93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7827808780164888694
 GameObject:
   m_ObjectHideFlags: 0

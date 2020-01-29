@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyShape : MonoBehaviour
+public class DestroyCircle : MonoBehaviour
 {
-
     GameManager gm;
     GameObject gameManager;
 
@@ -14,10 +13,10 @@ public class DestroyShape : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         gm = gameManager.GetComponent<GameManager>();
     }
-   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == this.gameObject.tag)
+        if (collision.gameObject.tag == "playerCircle")
         {
             gm.Addpoint();
             Destroy(this.gameObject);
