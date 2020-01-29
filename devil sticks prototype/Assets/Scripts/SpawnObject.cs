@@ -12,10 +12,10 @@ public class SpawnObject : MonoBehaviour
     int objectsBeforeSequence = 3;
     int CurrentObjsBeforeSequence;
     public int sequenceCount;
-    public int objectsSpawned;
+    int objectsSpawned;
     int sequenceChance;
     int addedRotation = 10;
-    public int directionMultiplier;
+    int directionMultiplier;
     Vector3 newRotation;
     bool sequenceStartable = false;
     bool firstObjectInSequence = false;
@@ -55,21 +55,27 @@ public class SpawnObject : MonoBehaviour
             else if (!sequenceActive && sequenceChance != 1)
             {
                 Instantiate(rotateObject, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                if (!sequenceStartable && !sequenceActive)
+                {
+                    CurrentObjsBeforeSequence += 1;
+                }
                 currentTime = Time.time;
             }
             
-            if (!sequenceStartable && !sequenceActive)
-            {
-                CurrentObjsBeforeSequence += 1;
-            }
             //sequence cannot start until certain amount of regular spawns have occurred
             if (CurrentObjsBeforeSequence >= objectsBeforeSequence)
             {
                 sequenceStartable = true;
             }
+
+            if (CurrentObjsBeforeSequence < objectsBeforeSequence)
+            {
+                sequenceStartable = false;
+            }
         }
     }
 
+    //spawn objects with increasing or decreasing rotation from the last
     IEnumerator SpawnSequence()
     {
         while (sequenceActive)

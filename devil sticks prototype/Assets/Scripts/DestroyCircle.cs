@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyCircle : MonoBehaviour
 {
     GameManager gm;
+    PowerMeter pmScript;
     GameObject gameManager;
     public ParticleSystem redParticles;
 
@@ -12,6 +13,7 @@ public class DestroyCircle : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        pmScript = gameManager.GetComponent<PowerMeter>();
         gm = gameManager.GetComponent<GameManager>();
     }
 
@@ -22,6 +24,7 @@ public class DestroyCircle : MonoBehaviour
             collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(redParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
+            pmScript.GainMeter();
             Destroy(this.gameObject);
         }
     }
