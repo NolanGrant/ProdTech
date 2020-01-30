@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D myRigidbody2D;
     public float rotationForce;
+    public float brakeDrag = .8f;
 
     public enum MovementMethod { setVelocityNoBrake, setVelocityWithBrake, addTorque }
     public MovementMethod movementMethod;
@@ -29,15 +30,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("CW"))
+        if (Input.GetButton("CW") && Input.GetButton("CCW") == false)
         {
             print("cw");
             RotatePlayer(-1);
         }
-        if (Input.GetButton("CCW"))
+        if (Input.GetButton("CCW") && Input.GetButton("CW") == false)
         {
             print("ccw");
             RotatePlayer(1);
+        }
+        if(Input.GetButton("CCW") == true && Input.GetButton("CW") == true)
+        {
+            //brake
+            myRigidbody2D.angularVelocity *= (1 - Time.fixedDeltaTime * brakeDrag);
         }
         else if (Input.GetButton("CW") == false && Input.GetButton("CCW") == false && movementMethod == MovementMethod.setVelocityWithBrake)
         {
