@@ -24,6 +24,11 @@ public class SpawnObject : MonoBehaviour
     bool firstObjectInSequence = false;
     public bool sequenceActive = false;
 
+    float bombHeightSpawn;
+    int bombChance;
+    float bombTime;
+    float currentBombTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +36,8 @@ public class SpawnObject : MonoBehaviour
         CurrentObjsBeforeSequence = 0;
         objectsSpawned = 0;
         currentTime = Time.time;
+        currentBombTime = Time.time;
+        bombTime = Random.Range(6, 15);
     }
 
     // Update is called once per frame
@@ -38,6 +45,7 @@ public class SpawnObject : MonoBehaviour
     {
         TrackSpawnSpeed();
         Spawn();
+        ManageBombSpawn();
     }
 
     void Spawn()
@@ -151,6 +159,26 @@ public class SpawnObject : MonoBehaviour
         {
             spawnTime = 3;
             sequenceSpawnTime = 0.2f;
+        }
+    }
+
+    void SpawnBomb()
+    {
+        bombHeightSpawn = Random.Range(-1.9f, 1.91f);
+        Instantiate(rotateObjects[2], new Vector3(transform.position.x, transform.position.y + bombHeightSpawn), Quaternion.identity);
+    }
+
+    void ManageBombSpawn()
+    {
+        if (Time.time > currentBombTime + bombTime)
+        {
+            bombTime = Random.Range(6, 10);
+            bombChance = Random.Range(0, 5);
+            currentBombTime = Time.time;
+            if (bombChance == 1)
+            {
+                SpawnBomb();
+            }
         }
     }
 }
