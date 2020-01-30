@@ -30,19 +30,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //rotate clockwise
         if (Input.GetButton("CW") && Input.GetButton("CCW") == false)
         {
             print("cw");
             RotatePlayer(-1);
         }
+        //rotate counter clockwise
         if (Input.GetButton("CCW") && Input.GetButton("CW") == false)
         {
             print("ccw");
             RotatePlayer(1);
         }
-        if(Input.GetButton("CCW") == true && Input.GetButton("CW") == true)
+        //when pushing both buttons, brake the rotation
+        if (Input.GetButton("CCW") == true && Input.GetButton("CW") == true)
         {
-            //brake
+            //brake rotation using drag method
             myRigidbody2D.angularVelocity *= (1 - Time.fixedDeltaTime * brakeDrag);
         }
         else if (Input.GetButton("CW") == false && Input.GetButton("CCW") == false && movementMethod == MovementMethod.setVelocityWithBrake)
