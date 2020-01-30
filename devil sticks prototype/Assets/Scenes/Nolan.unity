@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationForce: 111
-  brakeDrag: 3
+  brakeDrag: 1.5
   movementMethod: 2
   angleThreshold: 15
   distanceThreshold: 1

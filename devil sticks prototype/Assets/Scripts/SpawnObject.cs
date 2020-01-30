@@ -5,10 +5,13 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour
 {
    
-    float spawnTime = 3;
+    float spawnTime;
     float currentTime;
-    public GameObject rotateObject;
+    public GameObject[] rotateObjects;
+    GameManager gmScript;
+    int speedUpChance;
 
+    float sequenceSpawnTime;
     int objectsBeforeSequence = 3;
     int CurrentObjsBeforeSequence;
     public int sequenceCount;
@@ -21,18 +24,28 @@ public class SpawnObject : MonoBehaviour
     bool firstObjectInSequence = false;
     public bool sequenceActive = false;
 
+    float bombHeightSpawn;
+    int bombChance;
+    float bombTime;
+    float currentBombTime;
+
     // Start is called before the first frame update
     void Start()
     {
+        gmScript = FindObjectOfType<GameManager>();
         CurrentObjsBeforeSequence = 0;
         objectsSpawned = 0;
         currentTime = Time.time;
+        currentBombTime = Time.time;
+        bombTime = Random.Range(6, 15);
     }
 
     // Update is called once per frame
     void Update()
     {
+        TrackSpawnSpeed();
         Spawn();
+        ManageBombSpawn();
     }
 
     void Spawn()
@@ -52,12 +65,34 @@ public class SpawnObject : MonoBehaviour
                 StartCoroutine(SpawnSequence());
             }
             //spawn regular 
-            else if (!sequenceActive && sequenceChance != 1)
+            else if (!sequenceActive && sequenceChance != 1 && gmScript.increaseSpeed)
             {
-                Instantiate(rotateObject, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                Instantiate(rotateObjects[0], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 if (!sequenceStartable && !sequenceActive)
                 {
                     CurrentObjsBeforeSequence += 1;
+                }
+                currentTime = Time.time;
+            }
+            //chance spawn fast object
+            else if (!sequenceActive && sequenceChance != 1 && !gmScript.increaseSpeed)
+            {
+                speedUpChance = Random.Range(0, 4);
+                if (speedUpChance != 1)
+                {
+                    Instantiate(rotateObjects[0], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    if (!sequenceStartable && !sequenceActive)
+                    {
+                        CurrentObjsBeforeSequence += 1;
+                    }
+                }
+                else if (speedUpChance == 1)
+                {
+                    Instantiate(rotateObjects[1], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    if (!sequenceStartable && !sequenceActive)
+                    {
+                        CurrentObjsBeforeSequence += 1;
+                    }
                 }
                 currentTime = Time.time;
             }
@@ -82,7 +117,7 @@ public class SpawnObject : MonoBehaviour
         {
             if (firstObjectInSequence)
             {
-                GameObject newRotateObject = Instantiate(rotateObject as GameObject, transform.position, Quaternion.Euler(0, 0, newRotation.z + addedRotation * directionMultiplier));
+                GameObject newRotateObject = Instantiate(rotateObjects[0] as GameObject, transform.position, Quaternion.Euler(0, 0, newRotation.z + addedRotation * directionMultiplier));
                 newRotation = newRotateObject.transform.rotation.eulerAngles;
                 objectsSpawned += 1;
             }
@@ -97,7 +132,7 @@ public class SpawnObject : MonoBehaviour
                 sequenceCount = Random.Range(5, 21);
                 objectsSpawned = 0;
                 firstObjectInSequence = true;
-                GameObject newRotateObject = Instantiate(rotateObject as GameObject, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                GameObject newRotateObject = Instantiate(rotateObjects[0] as GameObject, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 newRotation = newRotateObject.transform.rotation.eulerAngles;
                 objectsSpawned += 1;
             }
@@ -109,7 +144,41 @@ public class SpawnObject : MonoBehaviour
                 CurrentObjsBeforeSequence = 0;
                 currentTime = Time.time;
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(sequenceSpawnTime);
+        }
+    }
+
+    void TrackSpawnSpeed()
+    {
+        if (gmScript.increaseSpeed)
+        {
+            spawnTime = 2f;
+            sequenceSpawnTime = 0.1f;
+        }
+        else
+        {
+            spawnTime = 3;
+            sequenceSpawnTime = 0.2f;
+        }
+    }
+
+    void SpawnBomb()
+    {
+        bombHeightSpawn = Random.Range(-1.9f, 1.91f);
+        Instantiate(rotateObjects[2], new Vector3(transform.position.x, transform.position.y + bombHeightSpawn), Quaternion.identity);
+    }
+
+    void ManageBombSpawn()
+    {
+        if (Time.time > currentBombTime + bombTime)
+        {
+            bombTime = Random.Range(6, 10);
+            bombChance = Random.Range(0, 5);
+            currentBombTime = Time.time;
+            if (bombChance == 1)
+            {
+                SpawnBomb();
+            }
         }
     }
 }

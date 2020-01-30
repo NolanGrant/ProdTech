@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
 
     }
 
+    Coroutine cwDetectFastButtonReleaseCoroutine;
+    Coroutine ccwDetectFastButtonReleaseCoroutine;
+
     // Update is called once per frame
     void Update()
     {
@@ -34,26 +37,63 @@ public class Player : MonoBehaviour
         if (Input.GetButton("CW") && Input.GetButton("CCW") == false)
         {
             print("cw");
+            if (cwDetectFastButtonReleaseCoroutine == null)
+            {
+                cwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CW"));
+            }
+            else
+            {
+                StopCoroutine(cwDetectFastButtonReleaseCoroutine);
+                cwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CW"));
+            }
             RotatePlayer(-1);
         }
         //rotate counter clockwise
         if (Input.GetButton("CCW") && Input.GetButton("CW") == false)
         {
             print("ccw");
+            if (ccwDetectFastButtonReleaseCoroutine == null)
+            {
+                ccwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CCW"));
+            }
+            else
+            {
+                StopCoroutine(ccwDetectFastButtonReleaseCoroutine);
+                ccwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CCW"));
+            }
             RotatePlayer(1);
         }
         //when pushing both buttons, brake the rotation
         if (Input.GetButton("CCW") == true && Input.GetButton("CW") == true)
         {
             //brake rotation using drag method
+            print("braking");
             myRigidbody2D.angularVelocity *= (1 - Time.fixedDeltaTime * brakeDrag);
         }
         else if (Input.GetButton("CW") == false && Input.GetButton("CCW") == false && movementMethod == MovementMethod.setVelocityWithBrake)
         {
             RotatePlayer(0);
         }
+    }
 
+    float maximumTimeToReleaseButtonToRecieveBoost;
+    IEnumerator DetectFastButtonRelease(string button)
+    {
+        float timeSincePress = 0;
 
+        while (timeSincePress < maximumTimeToReleaseButtonToRecieveBoost)
+        {
+            timeSincePress += Time.deltaTime;
+
+            if (Input.GetButtonUp(button))
+            {
+                //apply boost
+
+                break;
+            }
+
+            yield return null;
+        }
     }
 
     private void FixedUpdate()

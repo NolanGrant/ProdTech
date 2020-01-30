@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     int score;
     public Text scoreText;
 
+    public bool increaseSpeed = false;
+    float speedUpTime = 8;
+    float currentTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +23,28 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + score;
+        TrackSpeedUp();
     }
 
     public void Addpoint()
     {
         score += 1;
+    }
+
+    public void SpeedUp()
+    {
+        if (!increaseSpeed)
+        {
+            increaseSpeed = true;
+            currentTime = Time.time;
+        }
+    }
+
+    void TrackSpeedUp()
+    {
+        if (increaseSpeed && Time.time > currentTime + speedUpTime)
+        {
+            increaseSpeed = false;
+        }
     }
 }
