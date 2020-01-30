@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1481161538}
+  increaseSpeed: 0
 --- !u!4 &196935923
 Transform:
   m_ObjectHideFlags: 0
@@ -309,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meter: {fileID: 291802289}
+  currentMeter: 0
 --- !u!1 &291802287
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,11 +900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d80b601ab17b64ab61989e3ca7345d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateObject: {fileID: 7024390921108630468, guid: af2b3256f6ee1844b9704abcdce3c06e,
-    type: 3}
+  rotateObjects:
+  - {fileID: 7024390921108630468, guid: af2b3256f6ee1844b9704abcdce3c06e, type: 3}
+  - {fileID: 8106721438814833781, guid: f2a601982a434a243b6ca5069630645b, type: 3}
   sequenceCount: 0
-  objectsSpawned: 0
-  directionMultiplier: 0
   sequenceActive: 0
 --- !u!4 &1531205027
 Transform:
