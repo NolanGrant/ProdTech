@@ -8,6 +8,7 @@ TagManager:
   - circle
   - playerTriangle
   - playerCircle
+  - pooler
   layers:
   - Default
   - TransparentFX
