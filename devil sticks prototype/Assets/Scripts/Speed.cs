@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Speed : MonoBehaviour
 {
-<<<<<<< HEAD
-    // Start is called before the first frame update
-    void Start()
-    {
         
-=======
+
     float fastRotate;
     float setRotate;
     bool rotateFaster = false;
@@ -23,15 +19,12 @@ public class Speed : MonoBehaviour
         playerScript = GetComponent<Player>();
         setRotate = playerScript.rotationForce;
         fastRotate = playerScript.rotationForce * 5;
->>>>>>> NathanSpeedTest
+
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        
-=======
         RotateFast();
     }
 
@@ -49,6 +42,5 @@ public class Speed : MonoBehaviour
             rotateFaster = false;
             return;
         }
->>>>>>> NathanSpeedTest
     }
 }
