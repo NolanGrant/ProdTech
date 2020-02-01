@@ -9,6 +9,7 @@ TagManager:
   - playerTriangle
   - playerCircle
   - rotatingObject
+  - pooler
   layers:
   - Default
   - TransparentFX
