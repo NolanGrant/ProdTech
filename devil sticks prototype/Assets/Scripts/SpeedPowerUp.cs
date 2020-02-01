@@ -9,6 +9,9 @@ public class SpeedPowerUp : MonoBehaviour
     public ParticleSystem greenParticles;
     float currentSpeed = 5;
 
+    [Space(20)]
+    public ObjectPooler pooler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +37,7 @@ public class SpeedPowerUp : MonoBehaviour
     {
         if (transform.position.x <= -10)
         {
-            Destroy(this.gameObject);
+            pooler.Destroy(gameObject, 1);
         }
     }
 
@@ -45,7 +48,7 @@ public class SpeedPowerUp : MonoBehaviour
             collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(greenParticles, transform.position, Quaternion.identity);
             gmScript.SpeedUp();
-            Destroy(this.gameObject);
+            pooler.Destroy(gameObject, 1);
         }
     }
 }
