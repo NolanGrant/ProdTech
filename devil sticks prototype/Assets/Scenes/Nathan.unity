@@ -235,6 +235,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 02202030f85742f4691a3268eb3332d3, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -308,6 +310,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7c82618786723fe4c93f4ab759fd215c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -381,6 +385,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 1a5e6eb82196086438637deb535950e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -490,6 +496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RotatingObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024390921108630468, guid: af2b3256f6ee1844b9704abcdce3c06e,
+        type: 3}
+      propertyPath: m_TagString
+      value: rotatingObject
       objectReference: {fileID: 0}
     - target: {fileID: 7024390921108630469, guid: af2b3256f6ee1844b9704abcdce3c06e,
         type: 3}
@@ -710,6 +721,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
@@ -781,6 +794,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1755146430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7024390921108630469, guid: af2b3256f6ee1844b9704abcdce3c06e,
+    type: 3}
+  m_PrefabInstance: {fileID: 643928804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757842939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,5 +1114,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6189253, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: rotatingObject
+      value: 
+      objectReference: {fileID: 1755146430}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
