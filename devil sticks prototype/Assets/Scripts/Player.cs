@@ -89,12 +89,10 @@ public class Player : MonoBehaviour
     public float boostForce = 10f;
     IEnumerator DetectFastButtonRelease(string button)
     {
-        print("coroutine start");
         float timeSincePress = 0;
 
         while (timeSincePress < maximumTimeToReleaseButtonToRecieveBoost)
         {
-            print(timeSincePress);
             timeSincePress += Time.deltaTime;
             if (Input.GetButtonUp(button))
             {
@@ -138,7 +136,15 @@ public class Player : MonoBehaviour
         //        Destroy(obstacleManager.activeObstacle);
         //    }
         //}
+        print(myRigidbody2D.angularVelocity);
+        if (Mathf.Abs(myRigidbody2D.angularVelocity) > maxRotationSpeed)
+        {
+            print("speed capped");
+            myRigidbody2D.angularVelocity = Mathf.Sign(myRigidbody2D.angularVelocity) * maxRotationSpeed; 
+        }
     }
+
+    public float maxRotationSpeed = 1f;
 
     void RotatePlayer(float rotationDirection, ForceMode2D forceType)
     {
