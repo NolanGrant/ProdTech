@@ -613,10 +613,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: a7f17b7d-cfd4-46d2-b4dd-3c6e89630223
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: devil sticks prototype
+  organizationId: mustafa-kirgul
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
