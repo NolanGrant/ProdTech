@@ -2,20 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[Serializable]
-public struct obstacle
-{
-    public int index;
-    public GameObject pivot;
-    public bool onDisplay;
-    public float XPos;
-    public float angle;
-    public float rotationSpeed;
-    public GameObject triangle, circle;
-
-}
-
 public class ObjectPooler : MonoBehaviour
 {
 
