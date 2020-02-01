@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
@@ -29,6 +28,9 @@ public class SpawnObject : MonoBehaviour
     float bombTime;
     float currentBombTime;
 
+    [Space(20)]
+    public ObjectPooler pooler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class SpawnObject : MonoBehaviour
         currentTime = Time.time;
         currentBombTime = Time.time;
         bombTime = Random.Range(6, 15);
+        pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
     }
 
     // Update is called once per frame
@@ -67,7 +70,9 @@ public class SpawnObject : MonoBehaviour
             //spawn regular 
             else if (!sequenceActive && sequenceChance != 1 && gmScript.increaseSpeed)
             {
-                Instantiate(rotateObjects[0], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                var _temp = pooler.Spawn(0);
+                _temp.transform.position = transform.position;
+                _temp.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
                 if (!sequenceStartable && !sequenceActive)
                 {
                     CurrentObjsBeforeSequence += 1;
@@ -80,7 +85,9 @@ public class SpawnObject : MonoBehaviour
                 speedUpChance = Random.Range(0, 4);
                 if (speedUpChance != 1)
                 {
-                    Instantiate(rotateObjects[0], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    var _temp = pooler.Spawn(0);
+                    _temp.transform.position = transform.position;
+                    _temp.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
                     if (!sequenceStartable && !sequenceActive)
                     {
                         CurrentObjsBeforeSequence += 1;
@@ -88,7 +95,9 @@ public class SpawnObject : MonoBehaviour
                 }
                 else if (speedUpChance == 1)
                 {
-                    Instantiate(rotateObjects[1], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    var _temp = pooler.Spawn(1);
+                    _temp.transform.position = transform.position;
+                    _temp.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
                     if (!sequenceStartable && !sequenceActive)
                     {
                         CurrentObjsBeforeSequence += 1;
@@ -117,7 +126,9 @@ public class SpawnObject : MonoBehaviour
         {
             if (firstObjectInSequence)
             {
-                GameObject newRotateObject = Instantiate(rotateObjects[0] as GameObject, transform.position, Quaternion.Euler(0, 0, newRotation.z + addedRotation * directionMultiplier));
+                GameObject newRotateObject = pooler.Spawn(0);
+                newRotateObject.transform.position = transform.position;
+                newRotateObject.transform.rotation = Quaternion.Euler(0, 0, newRotation.z + addedRotation * directionMultiplier);
                 newRotation = newRotateObject.transform.rotation.eulerAngles;
                 objectsSpawned += 1;
             }
@@ -132,8 +143,9 @@ public class SpawnObject : MonoBehaviour
                 sequenceCount = Random.Range(5, 21);
                 objectsSpawned = 0;
                 firstObjectInSequence = true;
-                GameObject newRotateObject = Instantiate(rotateObjects[0] as GameObject, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-                newRotation = newRotateObject.transform.rotation.eulerAngles;
+                GameObject newRotateObject = pooler.Spawn(0);
+                newRotateObject.transform.position = transform.position;
+                newRotateObject.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
                 objectsSpawned += 1;
             }
 
@@ -165,7 +177,9 @@ public class SpawnObject : MonoBehaviour
     void SpawnBomb()
     {
         bombHeightSpawn = Random.Range(-1.9f, 1.91f);
-        Instantiate(rotateObjects[2], new Vector3(transform.position.x, transform.position.y + bombHeightSpawn), Quaternion.identity);
+        var _temp = pooler.Spawn(2);
+        _temp.transform.position = new Vector3(transform.position.x, transform.position.y + bombHeightSpawn);
+        _temp.transform.rotation = Quaternion.identity;
     }
 
     void ManageBombSpawn()
