@@ -5,7 +5,13 @@ public class ObjectPooler : MonoBehaviour
 {
 
     public GameObject obstaclePrefab;
+    public List<GameObject>[] pools;
     public List<GameObject> cachedObstacles;
+
+    private void Start()
+    {
+        pools = new List<GameObject>[4]; 
+    }
 
     public GameObject Spawn()
     {
