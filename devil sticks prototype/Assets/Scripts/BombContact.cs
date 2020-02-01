@@ -25,9 +25,13 @@ public class BombContact : MonoBehaviour
     float cFlashTime = 0.2f;
     bool cFlash = false;
 
+    public AudioSource bombAudio;
+    AudioClip bombExplosion;
+
     // Start is called before the first frame update
     void Start()
     {
+        bombExplosion = bombAudio.clip;
        circleCollider = circle.GetComponentInChildren<CircleCollider2D>();
        triangleCollider = triangle.GetComponentInChildren<PolygonCollider2D>();
     }
@@ -43,6 +47,7 @@ public class BombContact : MonoBehaviour
     {
      if (!circleDisabled)
         {
+            bombAudio.PlayOneShot(bombExplosion);
             currentCDisableTime = Time.time;
             circleCollider.enabled = false;
             circleDisabled = true;
@@ -53,6 +58,7 @@ public class BombContact : MonoBehaviour
     {
         if (!triangleDisabled)
         {
+            bombAudio.PlayOneShot(bombExplosion);
             currentTDisableTime = Time.time;
             triangleCollider.enabled = false;
             triangleDisabled = true;
