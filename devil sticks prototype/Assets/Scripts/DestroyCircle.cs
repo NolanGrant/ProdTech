@@ -28,7 +28,7 @@ public class DestroyCircle : MonoBehaviour
             Instantiate(redParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
             pmScript.GainMeter();
-            pooler.Destroy(gameObject,2);
+            pooler.Destroy(gameObject,0);
         }
     }
 }

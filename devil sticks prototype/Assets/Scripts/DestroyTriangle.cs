@@ -9,6 +9,9 @@ public class DestroyTriangle : MonoBehaviour
     GameObject gameManager;
     public ParticleSystem blueParticles;
 
+    [Space(20)]
+    public ObjectPooler pooler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,7 @@ public class DestroyTriangle : MonoBehaviour
             Instantiate(blueParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
             pmScript.GainMeter();
-            Destroy(this.gameObject);
+            pooler.Destroy(gameObject, 0);
         }
     }
 }

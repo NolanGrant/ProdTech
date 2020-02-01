@@ -232,9 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df005cc8e1ba43a49a22bdadc4150ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 0}
-  cachedObstacles: []
-  nextObstacle: {fileID: 0}
+  pools: []
 --- !u!4 &712365655
 Transform:
   m_ObjectHideFlags: 0
