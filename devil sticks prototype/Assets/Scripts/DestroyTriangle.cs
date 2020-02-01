@@ -29,7 +29,7 @@ public class DestroyTriangle : MonoBehaviour
             Instantiate(blueParticles, transform.position, Quaternion.identity);
             gm.Addpoint();
             pmScript.GainMeter();
-            pooler.Destroy(gameObject, 0);
+            gameObject.SetActive(false);
         }
     }
 }

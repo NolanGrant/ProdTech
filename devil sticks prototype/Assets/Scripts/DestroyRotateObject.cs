@@ -5,7 +5,9 @@ using UnityEngine;
 public class DestroyRotateObject : MonoBehaviour
 {
     public GameObject triangle;
+    private GameObject _triangle;
     public GameObject circle;
+    private GameObject _circle;
     GameObject gameManager;
     PowerMeter pmScript;
 
@@ -18,31 +20,37 @@ public class DestroyRotateObject : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         pmScript = gameManager.GetComponent<PowerMeter>();
         pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
+        _triangle = triangle;
+        _circle = circle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (triangle == null && circle == null)
+        if (transform.position.x <= -10)
         {
-            pooler.Destroy(gameObject, 0);
-        }
+            if (triangle = null)
+            {
+                pmScript.DrainMeter();
+            }
 
-        if (transform.position.x <= -10 && triangle != null && circle != null)
-        {
-            pmScript.DrainMeter();
-            pmScript.DrainMeter();
+            if (circle = null)
+            {
+                pmScript.DrainMeter();
+            }
+
             pooler.Destroy(gameObject, 0);
+            triangle = _triangle;
+            circle = _circle;
         }
-        else if (transform.position.x <= -10 && triangle == null && circle != null)
+        else
         {
-            pmScript.DrainMeter();
-            pooler.Destroy(gameObject, 0);
-        }
-        else if (transform.position.x <= -10 && triangle != null && circle == null)
-        {
-            pmScript.DrainMeter();
-            pooler.Destroy(gameObject, 0);
+            if (triangle == null && circle == null)
+            {
+                pooler.Destroy(gameObject, 0);
+                triangle = _triangle;
+                circle = _circle;
+            }
         }
     }
 }

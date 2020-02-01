@@ -49,7 +49,7 @@ public class SpeedPowerUp : MonoBehaviour
             collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(greenParticles, transform.position, Quaternion.identity);
             gmScript.SpeedUp();
-            pooler.Destroy(gameObject, 1);
+            gameObject.SetActive(false);
         }
     }
 }
