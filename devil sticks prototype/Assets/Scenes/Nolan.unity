@@ -120,31 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &6189250 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3682460641362241440, guid: a3210a53fcf83a542b202ae3469d08cb,
-    type: 3}
-  m_PrefabInstance: {fileID: 2059329261}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6189251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6189250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320689b815e6c3948a8acb099e57c1b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationForce: 111
-  brakeDrag: 1.5
-  movementMethod: 2
-  angleThreshold: 15
-  distanceThreshold: 1
-  obstacleManager: {fileID: 1531205026}
-  maximumTimeToReleaseButtonToRecieveBoost: 0
 --- !u!1 &1531205025
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +442,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
       propertyPath: maximumTimeToReleaseButtonToRecieveBoost
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: boostForce
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: rotationForce
+      value: 80
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5956845018053946928, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+    - {fileID: 6189254, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+    - {fileID: 6189252, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
