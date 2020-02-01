@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         //rotate clockwise
         if (Input.GetButton("CW") && Input.GetButton("CCW") == false)
         {
-            print("cw");
+            //print("cw");
             if (cwDetectFastButtonReleaseCoroutine == null)
             {
                 cwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CW"));
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         //rotate counter clockwise
         if (Input.GetButton("CCW") && Input.GetButton("CW") == false)
         {
-            print("ccw");
+            //print("ccw");
             if (ccwDetectFastButtonReleaseCoroutine == null)
             {
                 ccwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CCW"));
@@ -76,19 +76,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    float maximumTimeToReleaseButtonToRecieveBoost;
+    public float maximumTimeToReleaseButtonToRecieveBoost = .5f;
     IEnumerator DetectFastButtonRelease(string button)
     {
+        print("coroutine start");
         float timeSincePress = 0;
 
         while (timeSincePress < maximumTimeToReleaseButtonToRecieveBoost)
         {
+            print(timeSincePress);
             timeSincePress += Time.deltaTime;
-
             if (Input.GetButtonUp(button))
             {
                 //apply boost
-
+                print("apply boost");
                 break;
             }
 
@@ -99,31 +100,31 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (obstacleManager.activeObstacle != null)
-        {
-            if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold)
-            {
-                Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.green);
-            }
-            else
-            {
-                Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.magenta);
-            }
-        }
-        Debug.DrawLine(transform.position, transform.position + transform.right * distanceThreshold, Color.white);
+        //if (obstacleManager.activeObstacle != null)
+        //{
+        //    if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold)
+        //    {
+        //        Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.green);
+        //    }
+        //    else
+        //    {
+        //        Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.magenta);
+        //    }
+        //}
+        //Debug.DrawLine(transform.position, transform.position + transform.right * distanceThreshold, Color.white);
 
-        if (obstacleManager.activeObstacle != null)
-        {
-            if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold && Vector2.Distance(myRigidbody2D.position, obstacleManager.activeObstacle.transform.position) < distanceThreshold)
-            {
-                Destroy(obstacleManager.activeObstacle);
-            }
-        }
+        //if (obstacleManager.activeObstacle != null)
+        //{
+        //    if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold && Vector2.Distance(myRigidbody2D.position, obstacleManager.activeObstacle.transform.position) < distanceThreshold)
+        //    {
+        //        Destroy(obstacleManager.activeObstacle);
+        //    }
+        //}
     }
 
     void RotatePlayer(int rotationDirection)
     {
-        print("rotating");
+        //print("rotating");
         if (movementMethod == MovementMethod.addTorque)
         {
             myRigidbody2D.AddTorque((float)rotationDirection * rotationForce * Time.deltaTime, ForceMode2D.Force);
