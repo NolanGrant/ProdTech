@@ -9,6 +9,9 @@ public class DestroyRotateObject : MonoBehaviour
     GameObject gameManager;
     PowerMeter pmScript;
 
+    [Space(20)]
+    public ObjectPooler pooler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,24 +24,24 @@ public class DestroyRotateObject : MonoBehaviour
     {
         if (triangle == null && circle == null)
         {
-            Destroy(this.gameObject);
+            pooler.Destroy(gameObject, 0);
         }
 
         if (transform.position.x <= -10 && triangle != null && circle != null)
         {
             pmScript.DrainMeter();
             pmScript.DrainMeter();
-            Destroy(this.gameObject);
+            pooler.Destroy(gameObject, 0);
         }
         else if (transform.position.x <= -10 && triangle == null && circle != null)
         {
             pmScript.DrainMeter();
-            Destroy(this.gameObject);
+            pooler.Destroy(gameObject, 0);
         }
         else if (transform.position.x <= -10 && triangle != null && circle == null)
         {
             pmScript.DrainMeter();
-            Destroy(this.gameObject);
+            pooler.Destroy(gameObject, 0);
         }
     }
 }
