@@ -27,16 +27,15 @@ public class Player : MonoBehaviour
 
     }
 
-    Coroutine cwDetectFastButtonReleaseCoroutine;
-    Coroutine ccwDetectFastButtonReleaseCoroutine;
+    Coroutine cwDetectFastButtonReleaseCoroutine = null;
+    Coroutine ccwDetectFastButtonReleaseCoroutine = null;
 
     // Update is called once per frame
     void Update()
     {
-        //rotate clockwise
-        if (Input.GetButton("CW") && Input.GetButton("CCW") == false)
+        //boost detection
+        if (Input.GetButtonDown("CW"))
         {
-            print("cw");
             if (cwDetectFastButtonReleaseCoroutine == null)
             {
                 cwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CW"));
@@ -44,14 +43,12 @@ public class Player : MonoBehaviour
             else
             {
                 StopCoroutine(cwDetectFastButtonReleaseCoroutine);
-                cwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CW"));
+                cwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CW"));  
             }
-            RotatePlayer(-1);
         }
-        //rotate counter clockwise
-        if (Input.GetButton("CCW") && Input.GetButton("CW") == false)
+        if (Input.GetButtonDown("CCW"))
         {
-            print("ccw");
+            //print("ccw");
             if (ccwDetectFastButtonReleaseCoroutine == null)
             {
                 ccwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CCW"));
@@ -61,7 +58,19 @@ public class Player : MonoBehaviour
                 StopCoroutine(ccwDetectFastButtonReleaseCoroutine);
                 ccwDetectFastButtonReleaseCoroutine = StartCoroutine(DetectFastButtonRelease("CCW"));
             }
-            RotatePlayer(1);
+        }
+
+        //rotate clockwise
+        if (Input.GetButton("CW") && Input.GetButton("CCW") == false)
+        {
+            //print("cw");
+            RotatePlayer(-1, ForceMode2D.Force);
+        }
+        //rotate counter clockwise
+        if (Input.GetButton("CCW") && Input.GetButton("CW") == false)
+        {
+            //print("ccw");
+            RotatePlayer(1, ForceMode2D.Force);
         }
         //when pushing both buttons, brake the rotation
         if (Input.GetButton("CCW") == true && Input.GetButton("CW") == true)
@@ -72,11 +81,12 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetButton("CW") == false && Input.GetButton("CCW") == false && movementMethod == MovementMethod.setVelocityWithBrake)
         {
-            RotatePlayer(0);
+            RotatePlayer(0, ForceMode2D.Force);
         }
     }
 
-    float maximumTimeToReleaseButtonToRecieveBoost;
+    public float maximumTimeToReleaseButtonToRecieveBoost = .5f;
+    public float boostForce = 10f;
     IEnumerator DetectFastButtonRelease(string button)
     {
         float timeSincePress = 0;
@@ -84,11 +94,18 @@ public class Player : MonoBehaviour
         while (timeSincePress < maximumTimeToReleaseButtonToRecieveBoost)
         {
             timeSincePress += Time.deltaTime;
-
             if (Input.GetButtonUp(button))
             {
                 //apply boost
-
+                if (button == "CW")
+                {
+                    RotatePlayer(-boostForce, ForceMode2D.Impulse);
+                }
+                if (button == "CCW")
+                {
+                    RotatePlayer(boostForce, ForceMode2D.Impulse);
+                }
+                print("apply boost");
                 break;
             }
 
@@ -99,43 +116,51 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (obstacleManager.activeObstacle != null)
-        {
-            if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold)
-            {
-                Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.green);
-            }
-            else
-            {
-                Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.magenta);
-            }
-        }
-        Debug.DrawLine(transform.position, transform.position + transform.right * distanceThreshold, Color.white);
+        //if (obstacleManager.activeObstacle != null)
+        //{
+        //    if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold)
+        //    {
+        //        Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.green);
+        //    }
+        //    else
+        //    {
+        //        Debug.DrawLine(transform.position, obstacleManager.activeObstacle.transform.position, Color.magenta);
+        //    }
+        //}
+        //Debug.DrawLine(transform.position, transform.position + transform.right * distanceThreshold, Color.white);
 
-        if (obstacleManager.activeObstacle != null)
+        //if (obstacleManager.activeObstacle != null)
+        //{
+        //    if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold && Vector2.Distance(myRigidbody2D.position, obstacleManager.activeObstacle.transform.position) < distanceThreshold)
+        //    {
+        //        Destroy(obstacleManager.activeObstacle);
+        //    }
+        //}
+        print(myRigidbody2D.angularVelocity);
+        if (Mathf.Abs(myRigidbody2D.angularVelocity) > maxRotationSpeed)
         {
-            if (Vector2.Angle(obstacleManager.activeObstacle.transform.up, transform.up) < angleThreshold && Vector2.Distance(myRigidbody2D.position, obstacleManager.activeObstacle.transform.position) < distanceThreshold)
-            {
-                Destroy(obstacleManager.activeObstacle);
-            }
+            print("speed capped");
+            myRigidbody2D.angularVelocity = Mathf.Sign(myRigidbody2D.angularVelocity) * maxRotationSpeed; 
         }
     }
 
-    void RotatePlayer(int rotationDirection)
+    public float maxRotationSpeed = 1f;
+
+    void RotatePlayer(float rotationDirection, ForceMode2D forceType)
     {
-        print("rotating");
+        //print("rotating");
         if (movementMethod == MovementMethod.addTorque)
         {
-            myRigidbody2D.AddTorque((float)rotationDirection * rotationForce * Time.deltaTime, ForceMode2D.Force);
+            myRigidbody2D.AddTorque(rotationDirection * rotationForce * Time.deltaTime, forceType);
         }
         else if (movementMethod == MovementMethod.setVelocityNoBrake)
         {
-            myRigidbody2D.angularVelocity = (float)rotationDirection * rotationForce;
+            myRigidbody2D.angularVelocity = rotationDirection * rotationForce;
         }
 
         else if (movementMethod == MovementMethod.setVelocityWithBrake)
         {
-            myRigidbody2D.angularVelocity = (float)rotationDirection * rotationForce;
+            myRigidbody2D.angularVelocity = rotationDirection * rotationForce;
         }
     }
 }
