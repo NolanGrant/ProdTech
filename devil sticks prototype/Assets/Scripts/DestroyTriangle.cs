@@ -18,6 +18,7 @@ public class DestroyTriangle : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         pmScript = gameManager.GetComponent<PowerMeter>();
         gm = gameManager.GetComponent<GameManager>();
+        pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

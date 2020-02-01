@@ -15,6 +15,7 @@ public class SpeedPowerUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
         rb = GetComponent<Rigidbody2D>();
         gmScript = FindObjectOfType<GameManager>();
     }

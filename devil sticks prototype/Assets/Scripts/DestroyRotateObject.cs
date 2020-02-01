@@ -17,6 +17,7 @@ public class DestroyRotateObject : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
         pmScript = gameManager.GetComponent<PowerMeter>();
+        pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
     }
 
     // Update is called once per frame

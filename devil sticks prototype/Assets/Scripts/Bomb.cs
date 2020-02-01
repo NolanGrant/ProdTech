@@ -8,6 +8,10 @@ public class Bomb : MonoBehaviour
 
     [Space(20)]
     public ObjectPooler pooler;
+    private void Start()
+    {
+        pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -40,6 +40,7 @@ public class SpawnObject : MonoBehaviour
         currentTime = Time.time;
         currentBombTime = Time.time;
         bombTime = Random.Range(6, 15);
+        pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
     }
 
     // Update is called once per frame
