@@ -6,7 +6,6 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject obstaclePrefab;
     public List<GameObject> cachedObstacles;
-    public GameObject nextObstacle;
 
     public GameObject Spawn()
     {
