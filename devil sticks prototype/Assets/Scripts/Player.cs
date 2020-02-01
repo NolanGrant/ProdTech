@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public float angleThreshold = 15f;
     public float distanceThreshold = 1f;
 
-    public ObstacleManager obstacleManager;
+    //public ObstacleManager obstacleManager;
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     Coroutine cwDetectFastButtonReleaseCoroutine = null;
