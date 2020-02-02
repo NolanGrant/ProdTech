@@ -20,8 +20,6 @@ public class DestroyRotateObject : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         pmScript = gameManager.GetComponent<PowerMeter>();
         pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
-        _triangle = triangle;
-        _circle = circle;
     }
 
     // Update is called once per frame
@@ -29,27 +27,21 @@ public class DestroyRotateObject : MonoBehaviour
     {
         if (transform.position.x <= -10)
         {
-            if (triangle = null)
+            if (!triangle.activeSelf)
             {
                 pmScript.DrainMeter();
             }
-
-            if (circle = null)
+            if (!circle.activeSelf)
             {
                 pmScript.DrainMeter();
             }
-
             pooler.Destroy(gameObject, 0);
-            triangle = _triangle;
-            circle = _circle;
         }
         else
         {
-            if (triangle == null && circle == null)
+            if (!triangle.activeSelf && !circle.activeSelf)
             {
                 pooler.Destroy(gameObject, 0);
-                triangle = _triangle;
-                circle = _circle;
             }
         }
     }

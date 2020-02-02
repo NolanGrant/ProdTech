@@ -672,6 +672,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pooler
       objectReference: {fileID: 0}
+    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
+        type: 3}
+      propertyPath: pools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
+        type: 3}
+      propertyPath: pools.Array.data[0].name
+      value: rotate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
+        type: 3}
+      propertyPath: pools.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 7024390921108630468, guid: af2b3256f6ee1844b9704abcdce3c06e,
+        type: 3}
+    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
+        type: 3}
+      propertyPath: pools.Array.data[1].name
+      value: speedup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
+        type: 3}
+      propertyPath: pools.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 8106721438814833781, guid: f2a601982a434a243b6ca5069630645b,
+        type: 3}
+    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
+        type: 3}
+      propertyPath: pools.Array.data[2].name
+      value: bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
+        type: 3}
+      propertyPath: pools.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 4863512442609939067, guid: 2f09aad7d9398704ea1e880eecbf71f6,
+        type: 3}
     - target: {fileID: 3220039519301143659, guid: b169f3ee37292432da02dabeacc20b12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -727,44 +765,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
-        type: 3}
-      propertyPath: pools.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
-        type: 3}
-      propertyPath: pools.Array.data[0].name
-      value: rotate
-      objectReference: {fileID: 0}
-    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
-        type: 3}
-      propertyPath: pools.Array.data[0].prefab
-      value: 
-      objectReference: {fileID: 7024390921108630468, guid: af2b3256f6ee1844b9704abcdce3c06e,
-        type: 3}
-    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
-        type: 3}
-      propertyPath: pools.Array.data[1].name
-      value: speedup
-      objectReference: {fileID: 0}
-    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
-        type: 3}
-      propertyPath: pools.Array.data[1].prefab
-      value: 
-      objectReference: {fileID: 8106721438814833781, guid: f2a601982a434a243b6ca5069630645b,
-        type: 3}
-    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
-        type: 3}
-      propertyPath: pools.Array.data[2].name
-      value: bomb
-      objectReference: {fileID: 0}
-    - target: {fileID: 3220039519301143658, guid: b169f3ee37292432da02dabeacc20b12,
-        type: 3}
-      propertyPath: pools.Array.data[2].prefab
-      value: 
-      objectReference: {fileID: 4863512442609939067, guid: 2f09aad7d9398704ea1e880eecbf71f6,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b169f3ee37292432da02dabeacc20b12, type: 3}
 --- !u!1 &1481161536
@@ -894,12 +894,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1755146430 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7024390921108630469, guid: af2b3256f6ee1844b9704abcdce3c06e,
-    type: 3}
-  m_PrefabInstance: {fileID: 643928804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757842939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,14 +1148,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: maxRotationSpeed
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: rotationForce
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: maximumTimeToReleaseButtonToRecieveBoost
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
+      propertyPath: boostForce
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3682460641362241440, guid: a3210a53fcf83a542b202ae3469d08cb,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6189251, guid: a3210a53fcf83a542b202ae3469d08cb, type: 3}
-      propertyPath: maxRotationSpeed
-      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 3682460641362241441, guid: a3210a53fcf83a542b202ae3469d08cb,
         type: 3}

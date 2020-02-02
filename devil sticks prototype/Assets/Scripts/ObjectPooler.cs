@@ -13,10 +13,13 @@ public class Pool
 public class ObjectPooler : MonoBehaviour
 {
 
+
+
     public Pool[] pools;
 
     public List<GameObject> _children;
 
+    
     public GameObject Spawn(int _pool)
     {
         if (pools[_pool].objects.Count > 0)
@@ -52,10 +55,10 @@ public class ObjectPooler : MonoBehaviour
     {
 
         _children = new List<GameObject>();
-
-        foreach (Transform child in transform)
+        int _no = _parent.transform.childCount;
+        for (int i = 0; i < _no; i++)
         {
-            _children.Add(child.gameObject);
+            _children.Add(_parent.transform.GetChild(i).gameObject);
         }
 
         return _children;

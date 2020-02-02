@@ -8,18 +8,12 @@ public class DestroyCircle : MonoBehaviour
     PowerMeter pmScript;
     GameObject gameManager;
     public ParticleSystem redParticles;
-
-    [Space(20)]
-    public ObjectPooler pooler;
-
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
         pmScript = gameManager.GetComponent<PowerMeter>();
         gm = gameManager.GetComponent<GameManager>();
-        pooler = GameObject.FindGameObjectWithTag("pooler").GetComponent<ObjectPooler>();
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

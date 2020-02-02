@@ -93,7 +93,7 @@ public class SpawnObject : MonoBehaviour
                         CurrentObjsBeforeSequence += 1;
                     }
                 }
-                else if (speedUpChance == 1)
+                else if (speedUpChance == 1 && !sequenceActive)
                 {
                     var _temp = pooler.Spawn(1);
                     _temp.transform.position = transform.position;
@@ -146,6 +146,7 @@ public class SpawnObject : MonoBehaviour
                 GameObject newRotateObject = pooler.Spawn(0);
                 newRotateObject.transform.position = transform.position;
                 newRotateObject.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+                newRotation = newRotateObject.transform.rotation.eulerAngles;
                 objectsSpawned += 1;
             }
 

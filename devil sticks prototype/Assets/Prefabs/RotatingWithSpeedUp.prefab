@@ -25,11 +25,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288199414963009296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03999996, y: -1.9184176, z: 0}
+  m_LocalPosition: {x: -0.03999996, y: 0, z: 0}
   m_LocalScale: {x: 0.17416301, y: 0.17416301, z: 0.17416301}
   m_Children: []
-  m_Father: {fileID: 8106721439965096279}
-  m_RootOrder: 3
+  m_Father: {fileID: 8106721439913805745}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8669837875464281969
 SpriteRenderer:
@@ -108,8 +108,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.255, y: 0.255, z: 0.255}
   m_Children: []
-  m_Father: {fileID: 8106721439965096279}
-  m_RootOrder: 0
+  m_Father: {fileID: 8106721438814833780}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6344421215044714567
 SpriteRenderer:
@@ -190,7 +190,10 @@ Transform:
   m_LocalPosition: {x: 3, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8106721439965096279}
+  - {fileID: 4484921773533839603}
+  - {fileID: 8106721438925442556}
+  - {fileID: 8106721439913805745}
+  - {fileID: 7815800212791740009}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,8 +276,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.8104177, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8106721439965096279}
-  m_RootOrder: 2
+  m_Father: {fileID: 8106721438814833780}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8106721438925442559
 SpriteRenderer:
@@ -428,7 +431,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueParticles: {fileID: 6901061613214277503, guid: 4e1c5bc7c2b0662489a74667019753d2,
     type: 3}
-  pooler: {fileID: 0}
 --- !u!1 &8106721439913805750
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,9 +461,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.9184176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8106721439965096279}
-  m_RootOrder: 1
+  m_Children:
+  - {fileID: 3780053040345677922}
+  m_Father: {fileID: 8106721438814833780}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8106721439913805744
 SpriteRenderer:
@@ -564,41 +567,6 @@ MonoBehaviour:
   greenParticles: {fileID: 5998225600236391780, guid: a7feb9eb659e36b4eade69e57242f251,
     type: 3}
   pooler: {fileID: 0}
---- !u!1 &8106721439965096276
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8106721439965096279}
-  m_Layer: 0
-  m_Name: visuals
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8106721439965096279
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8106721439965096276}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7815800212791740009}
-  - {fileID: 8106721439913805745}
-  - {fileID: 8106721438925442556}
-  - {fileID: 3780053040345677922}
-  - {fileID: 4484921773533839603}
-  m_Father: {fileID: 8106721438814833780}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9032687022423924679
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,11 +592,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9032687022423924679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.054, z: 0}
+  m_LocalPosition: {x: 0, y: -0.05400002, z: 0}
   m_LocalScale: {x: 0.062127, y: 0.745767, z: 1}
   m_Children: []
-  m_Father: {fileID: 8106721439965096279}
-  m_RootOrder: 4
+  m_Father: {fileID: 8106721438814833780}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6956462283155721684
 SpriteRenderer:
