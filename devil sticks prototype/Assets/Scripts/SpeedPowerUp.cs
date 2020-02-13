@@ -29,6 +29,7 @@ public class SpeedPowerUp : MonoBehaviour
 
     void MoveObject()
     {
+        //move object left
         var hVelocity = rb.velocity;
         hVelocity.x = -currentSpeed;
         rb.velocity = hVelocity;
@@ -36,6 +37,7 @@ public class SpeedPowerUp : MonoBehaviour
 
     void DestroyAfterDistance()
     {
+        //send object back to pool if it reaches set X position
         if (transform.position.x <= -10)
         {
             pooler.Destroy(gameObject, 1);
@@ -48,6 +50,7 @@ public class SpeedPowerUp : MonoBehaviour
         {
             collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(greenParticles, transform.position, Quaternion.identity);
+            //set game to speed up if contact is made
             gmScript.SpeedUp();
             gameObject.SetActive(false);
         }

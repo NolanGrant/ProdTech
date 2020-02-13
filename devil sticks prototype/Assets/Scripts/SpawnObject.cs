@@ -58,9 +58,10 @@ public class SpawnObject : MonoBehaviour
             
             //50 50 chance to start sequence
             sequenceChance = Random.Range(0, 2);
-            //start the sequence spawn
+          
             if (sequenceChance == 1 && sequenceStartable)
             {
+                //start the sequence spawn
                 sequenceStartable = false;
                 CurrentObjsBeforeSequence = 0;
                 sequenceActive = true;
@@ -85,6 +86,7 @@ public class SpawnObject : MonoBehaviour
                 speedUpChance = Random.Range(0, 4);
                 if (speedUpChance != 1)
                 {
+                    //spawn regular if chance fails
                     var _temp = pooler.Spawn(0);
                     _temp.transform.position = transform.position;
                     _temp.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
@@ -95,6 +97,7 @@ public class SpawnObject : MonoBehaviour
                 }
                 else if (speedUpChance == 1 && !sequenceActive)
                 {
+                    //spawn fast object if chance succeeds
                     var _temp = pooler.Spawn(1);
                     _temp.transform.position = transform.position;
                     _temp.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
@@ -103,6 +106,7 @@ public class SpawnObject : MonoBehaviour
                         CurrentObjsBeforeSequence += 1;
                     }
                 }
+                //reset time for spawn to occur
                 currentTime = Time.time;
             }
             
@@ -119,7 +123,7 @@ public class SpawnObject : MonoBehaviour
         }
     }
 
-    //spawn objects with increasing or decreasing rotation from the last
+    //spawn objects with increasing or decreasing rotation from the last in sequence
     IEnumerator SpawnSequence()
     {
         while (sequenceActive)
@@ -136,20 +140,23 @@ public class SpawnObject : MonoBehaviour
             if (!firstObjectInSequence)
             {
                 directionMultiplier = Random.Range(-1, 1);
+                //determines direction objects rotate in
                 if (directionMultiplier != -1)
                 {
                     directionMultiplier = 1;
                 }
+                //determines how many objects spawn in the sequence
                 sequenceCount = Random.Range(5, 21);
                 objectsSpawned = 0;
                 firstObjectInSequence = true;
+                //spawn first in sequence and track its rotation
                 GameObject newRotateObject = pooler.Spawn(0);
                 newRotateObject.transform.position = transform.position;
                 newRotateObject.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
                 newRotation = newRotateObject.transform.rotation.eulerAngles;
                 objectsSpawned += 1;
             }
-
+            //stop the coroutine when all objects have been spawned
             if (objectsSpawned >= sequenceCount)
             {
                 sequenceActive = false;
@@ -157,12 +164,14 @@ public class SpawnObject : MonoBehaviour
                 CurrentObjsBeforeSequence = 0;
                 currentTime = Time.time;
             }
+            
             yield return new WaitForSeconds(sequenceSpawnTime);
         }
     }
 
     void TrackSpawnSpeed()
     {
+        //set object spawn time to be faster if game is sped up
         if (gmScript.increaseSpeed)
         {
             spawnTime = 2f;
@@ -177,6 +186,7 @@ public class SpawnObject : MonoBehaviour
 
     void SpawnBomb()
     {
+        //position that bomb can spawn
         bombHeightSpawn = Random.Range(-1.9f, 1.91f);
         var _temp = pooler.Spawn(2);
         _temp.transform.position = new Vector3(transform.position.x, transform.position.y + bombHeightSpawn);
@@ -185,11 +195,13 @@ public class SpawnObject : MonoBehaviour
 
     void ManageBombSpawn()
     {
+        //timer for chance for bomb to spawn
         if (Time.time > currentBombTime + bombTime)
         {
             bombTime = Random.Range(6, 10);
             bombChance = Random.Range(0, 5);
             currentBombTime = Time.time;
+            //if bomb chance succeeds spawn a bomb
             if (bombChance == 1)
             {
                 SpawnBomb();

@@ -26,7 +26,9 @@ public class PowerMeter : MonoBehaviour
 
     void MeterControl()
     {
+        //track amount for player health
         meter.fillAmount = currentMeter / maxMeter;
+        //change colour dependant on how full player health is
         if (currentMeter > 66)
         {
             meter.color = Color.green;
@@ -43,6 +45,7 @@ public class PowerMeter : MonoBehaviour
 
     public void GainMeter()
     {
+        //increase meter amount if meter is not full
         if (currentMeter < maxMeter)
         {
             currentMeter += meterGain;
@@ -56,6 +59,7 @@ public class PowerMeter : MonoBehaviour
 
     public void DrainMeter()
     {
+        //drain meter amount if meter is not empty
         if (currentMeter > 0)
         {
             currentMeter -= meterDrain;

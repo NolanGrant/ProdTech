@@ -23,8 +23,10 @@ public class DestroyTriangle : MonoBehaviour
         {
             collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(blueParticles, transform.position, Quaternion.identity);
+            //add to playe score
             gm.Addpoint();
             pmScript.GainMeter();
+            //disable object
             gameObject.SetActive(false);
         }
     }

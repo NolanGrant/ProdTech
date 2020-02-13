@@ -48,6 +48,7 @@ public class BombContact : MonoBehaviour
      if (!circleDisabled)
         {
             bombAudio.PlayOneShot(bombExplosion);
+            //set circle disabled
             currentCDisableTime = Time.time;
             circleCollider.enabled = false;
             circleDisabled = true;
@@ -59,6 +60,7 @@ public class BombContact : MonoBehaviour
         if (!triangleDisabled)
         {
             bombAudio.PlayOneShot(bombExplosion);
+            //set triangle disabled
             currentTDisableTime = Time.time;
             triangleCollider.enabled = false;
             triangleDisabled = true;
@@ -67,6 +69,7 @@ public class BombContact : MonoBehaviour
 
     void FlashShapes()
     {
+        //flash triangle to show that object is disbaled
         if (triangleDisabled)
         {
             if (!tFlash && Time.time > currentTFlashTime + tFlashTime)
@@ -85,10 +88,12 @@ public class BombContact : MonoBehaviour
         }
         else
         {
+            //set sprite permanently active
             tSR.enabled = true;
             tFlash = false;
         }
 
+        //flash circle to show that object is disabled
         if (circleDisabled)
         {
             if (!cFlash && Time.time > currentCFlashTime + cFlashTime)
@@ -107,6 +112,7 @@ public class BombContact : MonoBehaviour
         }
         else
         {
+            //set sprite permanently active
             cSR.enabled = true;
             cFlash = false;
         }
@@ -115,12 +121,13 @@ public class BombContact : MonoBehaviour
 
     void ResetShapes()
     {
+        //when disabled time is up, enable collider
         if (triangleDisabled && Time.time > currentTDisableTime + tDisableTime)
         {
             triangleCollider.enabled = true;
             triangleDisabled = false;
         }
-
+        //when disabled time is up, enable collider
         if (circleDisabled && Time.time > currentCDisableTime + cDisableTime)
         {
             circleCollider.enabled = true;

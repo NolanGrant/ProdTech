@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //track player score
         scoreText.text = "Score: " + score;
         TrackSpeedUp();
     }
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         score += 1;
     }
 
+    //sets timer for how long the game remains in sped up state
     public void SpeedUp()
     {
         if (!increaseSpeed)
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //when timer is up, game returns to regular speed
     void TrackSpeedUp()
     {
         if (increaseSpeed && Time.time > currentTime + speedUpTime)

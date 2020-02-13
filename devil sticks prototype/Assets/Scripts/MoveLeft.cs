@@ -30,6 +30,7 @@ public class MoveLeft : MonoBehaviour
 
     void SpeedUp()
     {
+        //increase movement speed if game is sped up
         if (gmScript.increaseSpeed)
         {
             currentSpeed = fastSpeed;
@@ -42,6 +43,7 @@ public class MoveLeft : MonoBehaviour
 
     void MoveObject()
     {
+        //move object left
         var hVelocity = rb.velocity;
         hVelocity.x = -currentSpeed;
         rb.velocity = hVelocity;

@@ -30,6 +30,7 @@ public class Speed : MonoBehaviour
 
     void RotateFast()
     {
+        //if game is sped up, set player rotate speed to be faster
         if (gmScript.increaseSpeed && !rotateFaster)
         {
             playerScript.rotationForce = fastRotate;

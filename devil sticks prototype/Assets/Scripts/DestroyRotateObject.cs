@@ -29,16 +29,20 @@ public class DestroyRotateObject : MonoBehaviour
         {
             if (!triangle.activeSelf)
             {
+                //damage player health
                 pmScript.DrainMeter();
             }
             if (!circle.activeSelf)
             {
+                //damage player health
                 pmScript.DrainMeter();
             }
+            //send object to pool 
             pooler.Destroy(gameObject, 0);
         }
         else
         {
+            //send object to pool if circle and triangle were hit
             if (!triangle.activeSelf && !circle.activeSelf)
             {
                 pooler.Destroy(gameObject, 0);

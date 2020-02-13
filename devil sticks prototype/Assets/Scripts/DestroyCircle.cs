@@ -22,8 +22,10 @@ public class DestroyCircle : MonoBehaviour
         {
             collision.gameObject.GetComponentInParent<PlayerAudioHandler>().PlaySound();
             Instantiate(redParticles, transform.position, Quaternion.identity);
+            //add to player score
             gm.Addpoint();
             pmScript.GainMeter();
+            //disable object
             gameObject.SetActive(false);
         }
     }
