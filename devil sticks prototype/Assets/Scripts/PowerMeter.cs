@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class PowerMeter : MonoBehaviour
 {
     public Image meter;
-    float meterGain = 0.5f;
-    float meterDrain = 6;
-    float maxMeter = 100;
+    float meterGain = 1f;
+    float meterDrain = 4;
+    public float maxMeter = 100;
     public float currentMeter;
     float newMeter;
 

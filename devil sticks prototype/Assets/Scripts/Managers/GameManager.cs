@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         scoreText.text = "Score: " + score;
     }
 
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
         //track player score
         scoreText.text = "Score: " + score;
         TrackSpeedUp();
+        RestartGame();
     }
 
     public void Addpoint()
@@ -48,6 +51,14 @@ public class GameManager : MonoBehaviour
         if (increaseSpeed && Time.time > currentTime + speedUpTime)
         {
             increaseSpeed = false;
+        }
+    }
+
+    void RestartGame()
+    {
+        if (Input.GetButtonDown("Restart"))
+        {
+            SceneManager.LoadScene("Nathan");
         }
     }
 }

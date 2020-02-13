@@ -27,16 +27,17 @@ public class DestroyRotateObject : MonoBehaviour
     {
         if (transform.position.x <= -10)
         {
-            if (!triangle.activeSelf)
+            if (triangle.activeSelf)
             {
                 //damage player health
                 pmScript.DrainMeter();
             }
-            if (!circle.activeSelf)
+            if (circle.activeSelf)
             {
                 //damage player health
                 pmScript.DrainMeter();
             }
+            
             //send object to pool 
             pooler.Destroy(gameObject, 0);
         }
