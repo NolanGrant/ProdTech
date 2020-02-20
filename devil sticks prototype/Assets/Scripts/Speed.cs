@@ -18,7 +18,7 @@ public class Speed : MonoBehaviour
         gmScript = FindObjectOfType<GameManager>();
         playerScript = GetComponent<Player>();
         setRotate = playerScript.rotationForce;
-        fastRotate = playerScript.rotationForce * 5;
+        fastRotate = playerScript.rotationForce * 3;
 
     }
 

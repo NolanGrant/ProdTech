@@ -81,7 +81,7 @@ public class SpawnObject : MonoBehaviour
                 currentTime = Time.time;
             }
             //chance spawn fast object
-            else if (!sequenceActive && sequenceChance != 1 && !gmScript.increaseSpeed)
+            else if (sequenceActive == false && sequenceChance != 1 && gmScript.increaseSpeed == false)
             {
                 speedUpChance = Random.Range(0, 4);
                 if (speedUpChance != 1)
@@ -95,7 +95,7 @@ public class SpawnObject : MonoBehaviour
                         CurrentObjsBeforeSequence += 1;
                     }
                 }
-                else if (speedUpChance == 1 && !sequenceActive)
+                else if (speedUpChance == 1 && !sequenceActive && !gmScript.increaseSpeed)
                 {
                     //spawn fast object if chance succeeds
                     var _temp = pooler.Spawn(1);
