@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Restart"))
         {
-            SceneManager.LoadScene("Nathan");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
         }
     }
 }
