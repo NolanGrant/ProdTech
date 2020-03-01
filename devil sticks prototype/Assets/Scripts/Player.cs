@@ -136,6 +136,7 @@ public class Player : MonoBehaviour
         //        Destroy(obstacleManager.activeObstacle);
         //    }
         //}
+
         print(myRigidbody2D.angularVelocity);
         if (Mathf.Abs(myRigidbody2D.angularVelocity) > maxRotationSpeed)
         {
